@@ -16,7 +16,7 @@ public class WordCounter {
         BufferedReader reader = new BufferedReader(new FileReader(filePath));
         for (String line; (line = reader.readLine()) != null; ) {
             for (String w : line.trim().split("\\s+")) {
-                w = w.replaceAll("[^a-zA-Z]", "");
+                w = w.replaceAll("[^\\p{L}]", "").toLowerCase();
                 wordsMap.merge(w, 1, Integer::sum);
             }
         }
