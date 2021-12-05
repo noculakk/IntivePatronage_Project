@@ -1,7 +1,10 @@
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Stream;
 
 public class WordCounter {
 
@@ -21,5 +24,9 @@ public class WordCounter {
             }
         }
         return wordsMap;
+    }
+
+    public static Stream<Map.Entry<String, Integer>> sortWords(HashMap<String, Integer> wordsMap) {
+        return wordsMap.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()));
     }
 }
