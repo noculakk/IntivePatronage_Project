@@ -6,6 +6,8 @@ import java.io.IOException;
 public class Patronage {
     public static void main(String[] args) {
         args = new String[]{"--source-path=C:\\Users\\nocul\\IdeaProjects\\IntivePatronage_Project\\test1.txt"};
+
+        // Option definitions
         Options options = new Options();
 
         options.addOption("h", "help", false, "Print help message and quit");
@@ -16,6 +18,8 @@ public class Patronage {
 
         CommandLineParser parser = new DefaultParser();
         CommandLine line;
+
+        // Option parsing
         try {
             line = parser.parse(options, args);
 
@@ -30,33 +34,35 @@ public class Patronage {
         }
 
         try {
+            // Source file checks
             if (!line.hasOption("source-path")) {
-                System.out.println("Nie podano ścieżki pliku źródłowego");
+                System.out.println("Source path not set!");
                 return;
             }
 
             String sourcePath = line.getOptionValue("source-path");
             File sourceFile = new File(sourcePath);
             if (!sourceFile.exists()) {
-                System.out.println("Dany plik nie istnieje!");
+                System.out.println("No file found at source path!");
                 return;
             }
             if (!WordCounter.checkSize(sourcePath, Settings.MAX_FILE_SIZE_BYTES)) {
-                System.out.println("Podany plik ma rozmiar powyzej 5 MB!");
+                System.out.println("File at source path is larger than 5 MB");
                 return;
             }
 
+            // Main procedure: counting words from file
             var wordsMap = WordCounter.countWords(sourcePath);
-            System.out.printf("%15s %17s", "Słowo:", "Wystąpienia:");
+            System.out.printf("%15s %17s", "Word:", "Occurrences:");
 
+            // Reading stream from previous method and printing out to chosen outputs
             WordCounter.sortWords(wordsMap).forEach(entry -> {
-                System.out.println("");
-                System.out.printf("%15s %17d", entry.getKey(), entry.getValue());
+                // Print to standard output
+                System.out.printf("\n%15s %17d", entry.getKey(), entry.getValue());
             });
         } catch (IOException e) {
+            System.out.println("I/O Error while reading from file!");
             e.printStackTrace();
         }
-
-
     }
 }
