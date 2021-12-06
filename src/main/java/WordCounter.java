@@ -23,6 +23,7 @@ public class WordCounter {
                 wordsMap.merge(w, 1, Integer::sum);
             }
         }
+        reader.close();
         return wordsMap;
     }
 

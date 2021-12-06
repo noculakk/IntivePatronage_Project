@@ -11,9 +11,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class WordCounterTest {
     File testFile;
 
-    @Before
+    @org.junit.jupiter.api.BeforeEach
     public void before() throws IOException {
-        testFile = new File("test1.txt");
+        testFile = new File("test.txt");
         FileWriter fw = new FileWriter(testFile);
 
         fw.write("Programista, programista powinien umieć w Google. ");
@@ -28,10 +28,10 @@ class WordCounterTest {
             put("umieć", 1);
             put("w", 1);
             put("google", 1);
-        }}, WordCounter.countWords("test1.txt"));
+        }}, WordCounter.countWords("test.txt"));
 
     }
-    @After
+    @org.junit.jupiter.api.AfterEach
     public void after() {
         testFile.delete();
     }

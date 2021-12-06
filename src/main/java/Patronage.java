@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class Patronage {
     public static void main(String[] args) {
-        args = new String[] {"--source-path=C:\\Users\\Nela\\IdeaProjects\\IntivePatronage_Project\\src\\main\\java\\test1.txt"};
+        args = new String[] {"--source-path=C:\\Users\\nocul\\IdeaProjects\\IntivePatronage_Project\\test1.txt"};
         Options options = new Options();
 
         options.addOption("h", "help", false, "Print help message and quit");
@@ -39,8 +39,11 @@ public class Patronage {
                 }
                 if (WordCounter.checkSize(sourcePath, 1024 * 1024 * 5)) {
                     var wordsMap = WordCounter.countWords(sourcePath);
+                    System.out.printf("%15s %17s", "Słowo:", "Wystąpienia:");
+
                     WordCounter.sortWords(wordsMap).forEach(entry->{
-                        System.out.println(entry.getKey() + " " + entry.getValue());
+                        System.out.println("");
+                        System.out.printf("%15s %17d",entry.getKey(), entry.getValue());
                     });
                 }
             }
