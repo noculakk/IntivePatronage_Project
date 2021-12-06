@@ -31,7 +31,7 @@ public class Patronage {
 
             if (line.hasOption("help")) {
                 HelpFormatter formatter = new HelpFormatter();
-                formatter.printHelp("java Patronage [OPTIONS]", options);
+                formatter.printHelp("java -jar IntivePatronage_Project.jar [OPTIONS]", options);
                 return;
             }
         } catch (ParseException exp) {
