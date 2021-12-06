@@ -13,7 +13,7 @@ class WordCounterTest {
 
     @org.junit.jupiter.api.BeforeEach
     public void before() throws IOException {
-        testFile = new File("test.txt");
+        testFile = new File("Example.txt");
         FileWriter fw = new FileWriter(testFile);
 
         fw.write("Programista, programista powinien umieć w Google. ");
@@ -28,7 +28,7 @@ class WordCounterTest {
             put("umieć", 1);
             put("w", 1);
             put("google", 1);
-        }}, WordCounter.countWords("test.txt"));
+        }}, WordCounter.countWords("Example.txt"));
 
     }
     @org.junit.jupiter.api.AfterEach
