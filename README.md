@@ -13,7 +13,7 @@ by default)
 * `-z`, `--zip`                 zip result file(s)
 
 For easier demonstration, there is Example.txt file added to this repository. You can test run this program using following command:
-```java -jar IntivePatronage_Project.jar -p Example.txt --xlsx --zip```
+```java -jar IntivePatronage_Project.jar -p Example.txt --xlsx```
 
 # Tech overview
 ## Code optimizations
@@ -21,3 +21,6 @@ I used HashSet for efficient execution of program's core procedure - counting wo
 
 ## Used libraries
 I used some libraries from Apache project, namely POI and Commons CLI, for parsing CLI arguments and writing to .xlsx file. Thanks to that I was able to focus on other, more creative aspects of this project.
+
+### Unit testing
+For unit testing core function from WordCounter class, I used JUnit 5.
