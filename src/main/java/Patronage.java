@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class Patronage {
     public static void main(String[] args) {
-        args = new String[] {"--source-path=C:\\Users\\nocul\\IdeaProjects\\IntivePatronage_Project\\test1.txt"};
+        args = new String[]{"--source-path=C:\\Users\\nocul\\IdeaProjects\\IntivePatronage_Project\\test1.txt"};
         Options options = new Options();
 
         options.addOption("h", "help", false, "Print help message and quit");
@@ -30,26 +30,29 @@ public class Patronage {
         }
 
         try {
-            if(line.hasOption("source-path")) {
-                String sourcePath = line.getOptionValue("source-path");
-                File f = new File(sourcePath);
-                if(!f.exists()) {
-                    System.out.println("Dany plik nie istnieje!");
-                    return;
-                }
-                if (WordCounter.checkSize(sourcePath, 1024 * 1024 * 5)) {
-                    var wordsMap = WordCounter.countWords(sourcePath);
-                    System.out.printf("%15s %17s", "Słowo:", "Wystąpienia:");
-
-                    WordCounter.sortWords(wordsMap).forEach(entry->{
-                        System.out.println("");
-                        System.out.printf("%15s %17d",entry.getKey(), entry.getValue());
-                    });
-                }
-            }
-            else {
+            if (!line.hasOption("source-path")) {
                 System.out.println("Nie podano ścieżki pliku źródłowego");
+                return;
             }
+
+            String sourcePath = line.getOptionValue("source-path");
+            File sourceFile = new File(sourcePath);
+            if (!sourceFile.exists()) {
+                System.out.println("Dany plik nie istnieje!");
+                return;
+            }
+            if (!WordCounter.checkSize(sourcePath, Settings.MAX_FILE_SIZE_BYTES)) {
+                System.out.println("Podany plik ma rozmiar powyzej 5 MB!");
+                return;
+            }
+
+            var wordsMap = WordCounter.countWords(sourcePath);
+            System.out.printf("%15s %17s", "Słowo:", "Wystąpienia:");
+
+            WordCounter.sortWords(wordsMap).forEach(entry -> {
+                System.out.println("");
+                System.out.printf("%15s %17d", entry.getKey(), entry.getValue());
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
