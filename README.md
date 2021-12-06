@@ -24,7 +24,7 @@ following command:
 
 ## Code optimizations
 
-I used HashSet for efficient execution of program's core procedure - counting words in a file. HashSet is great for
+I used HashMap for efficient execution of program's core procedure - counting words in a file. HashSet is great for
 storing results of such operations, because of O(1) read and write complexity.
 
 ## Used libraries
