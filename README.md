@@ -16,7 +16,7 @@ For easier demonstration, there is Example.txt file added to this repository. Yo
 ```java -jar IntivePatronage_Project.jar -p Example.txt --xlsx --zip```
 
 # Tech overview
-## Code optimisations
+## Code optimizations
 I used HashSet for efficient execution of program's core procedure - counting words in a file. HashSet is great for storing results of such operations, because of O(1) read and write complexity.
 
 ## Used libraries
