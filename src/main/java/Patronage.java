@@ -50,13 +50,14 @@ public class Patronage {
                 return;
             }
 
-            String sourcePath = line.getOptionValue("source-path");
-            File sourceFile = new File(sourcePath);
+
+            String sourcePathStr = line.getOptionValue("source-path");
+            File sourceFile = new File(sourcePathStr);
             if (!sourceFile.exists()) {
                 System.out.println("No file found at source path!");
                 return;
             }
-            if (!WordCounter.checkSize(sourcePath, Settings.MAX_FILE_SIZE_BYTES)) {
+            if (!WordCounter.checkSize(sourcePathStr, Settings.MAX_FILE_SIZE_BYTES)) {
                 System.out.println("File at source path is larger than 5 MB");
                 return;
             }
@@ -72,7 +73,7 @@ public class Patronage {
             createdFiles.add(txtResultFile);
 
             // Main procedure: counting words from file
-            var wordsMap = WordCounter.countWords(sourcePath);
+            var wordsMap = WordCounter.countWords(sourcePathStr);
             System.out.printf("%15s %17s", "Word:", "Occurrences:");
 
             XSSFWorkbook workbook = null;
