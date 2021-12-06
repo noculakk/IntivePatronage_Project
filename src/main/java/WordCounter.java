@@ -20,6 +20,8 @@ public class WordCounter {
         for (String line; (line = reader.readLine()) != null; ) {
             for (String w : line.trim().split("\\s+")) {
                 w = w.replaceAll("[^\\p{L}]", "").toLowerCase();
+                if (w.isBlank())
+                    continue;
                 wordsMap.merge(w, 1, Integer::sum);
             }
         }
