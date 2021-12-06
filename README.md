@@ -1,10 +1,10 @@
-## Overview
+# Overview
 
 This command line tool can be used to efficiently count number of occurrences of specific words in selected file. Its
 results are by default printed to standard output and written to text file. It also supports export to .xlsx file and
 adding those files to .zip archive.
 
-## Usage
+# Usage
 
 Note: you need `java` pointing to Java 11+ JRE on your path.
 
